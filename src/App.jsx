@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Users, Calculator, RotateCcw } from 'lucide-react';
 import PersonInput from './components/PersonInput';
 import SummaryResult from './components/SummaryResult';
+import { useTranslation } from 'react-i18next';
+
 
 const App = () => {
   const [step, setStep] = useState(1);
@@ -10,6 +12,8 @@ const App = () => {
   const [taxPercent, setTaxPercent] = useState(10);
   const [additionalCost, setAdditionalCost] = useState(0);
   const [results, setResults] = useState([]);
+  const { t, i18n } = useTranslation();
+
 
   const initializePeople = () => {
     if (numberOfPeople < 1 || numberOfPeople > 20) {
@@ -84,11 +88,29 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mx-auto px-4 sm:px-6 py-8 max-w-6xl">
         {/* Header */}
         <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">🍽️ Split Bill App</h1>
-          <p className="text-gray-600">Bagi tagihan restoran dengan mudah dan akurat</p>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-2">
+            <img src="/favicon.ico" alt="Logo" className="w-8 h-8" />
+            {t('title')}
+          </h1>
+          <p className="text-gray-600">{t('subtitle')}Bagi tagihan restoran dengan mudah dan akurat</p>
+          {/* 🔽 Tombol bahasa di sini */}
+          <div className="flex justify-center gap-4 mt-4">
+            <button
+              onClick={() => i18n.changeLanguage('id')}
+              className="text-sm px-4 py-2 border rounded hover:bg-gray-100"
+            >
+              🇮🇩 Indonesia
+            </button>
+            <button
+              onClick={() => i18n.changeLanguage('en')}
+              className="text-sm px-4 py-2 border rounded hover:bg-gray-100"
+            >
+              🇬🇧 English
+            </button>
+          </div>
         </header>
 
         {/* Step 1: Number of People */}
