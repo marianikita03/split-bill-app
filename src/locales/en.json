@@ -1,6 +1,42 @@
 {
-  "title": "🍽️ Splitly",
+  "title": "Splitly",
   "subtitle": "Split your restaurant bill easily and accurately",
-  "next": "Continue",
-  "howManyPeople": "How Many People?"
+  "footer": "Shared simply and effortlessly with Splitly - by niki",
+  "step1": {
+    "title": "How Many People?",
+    "label": "Number of People (1-20)",
+    "next": "Continue"
+  },
+  "step2": {
+    "title": "Order Input",
+    "reset": "Reset",
+    "additionalTitle": "Additional Costs",
+    "taxLabel": "Restaurant Tax (%)",
+    "additionalLabel": "Additional Charge (Rp)",
+    "placeholder": "Service charge, parking, etc.",
+    "calculate": "Calculate Split Bill"
+  },
+  "alert": {
+    "invalidPeople": "Number of people must be between 1 and 20",
+    "noValidOrder": "has no valid orders"
+  },
+  "person": "Person",
+"namePlaceholder": "Person",
+"orderLabel": "Order:",
+"orderPlaceholder": "Food/drink name",
+"addOrder": "Add Order",
+"subtotal": "Subtotal:",
+"summary": {
+  "title": "Split Summary",
+  "back": "Back",
+  "download": "Download PNG",
+  "downloadError": "Failed to download image. Please try again.",
+  "result": "Split Bill Result",
+  "total": "Total",
+  "tax": "Tax",
+  "additional": "Additional Cost",
+  "orders": "Orders:",
+  "subtotal": "Subtotal",
+  "generated": "Generated on"
+}
 }

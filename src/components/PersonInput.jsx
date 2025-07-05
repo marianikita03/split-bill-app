@@ -1,7 +1,11 @@
 import React from 'react';
 import { Users, Plus, Trash2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+
 
 const PersonInput = ({ personIndex, person, onUpdatePerson }) => {
+  const { t } = useTranslation();
+  
   const addOrderItem = () => {
     const newOrders = [...person.orders, { item: '', price: 0 }];
     onUpdatePerson(personIndex, { ...person, orders: newOrders });
@@ -26,12 +30,12 @@ const PersonInput = ({ personIndex, person, onUpdatePerson }) => {
   };
 
   return (
-    <div className="card mb-4 hover:shadow-lg transition-shadow duration-200">
+    <div className="bg-white p-4 rounded-lg shadow-md mb-4 hover:shadow-lg transition-shadow duration-200">
       <div className="flex items-center mb-4">
         <Users className="w-5 h-5 text-blue-600 mr-2" />
         <input
           type="text"
-          placeholder={`Nama Orang ${personIndex + 1}`}
+          placeholder={`${t('namePlaceholder')} ${personIndex + 1}`}
           value={person.name}
           onChange={(e) => updateName(e.target.value)}
           className="font-semibold text-lg bg-transparent border-b-2 border-blue-200 focus:border-blue-500 outline-none px-2 py-1 w-full"
@@ -44,7 +48,7 @@ const PersonInput = ({ personIndex, person, onUpdatePerson }) => {
           <div key={orderIndex} className="flex gap-2 items-center">
             <input
               type="text"
-              placeholder="Nama makanan/minuman"
+              placeholder={t('orderPlaceholder')}
               value={order.item}
               onChange={(e) => updateOrderItem(orderIndex, 'item', e.target.value)}
               className="flex-1 input-field text-sm"
@@ -74,7 +78,7 @@ const PersonInput = ({ personIndex, person, onUpdatePerson }) => {
           className="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
-          Tambah Pesanan
+          {t('addOrder')}
         </button>
       </div>
       

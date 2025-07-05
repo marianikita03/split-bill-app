@@ -17,7 +17,7 @@ const App = () => {
 
   const initializePeople = () => {
     if (numberOfPeople < 1 || numberOfPeople > 20) {
-      alert('Jumlah orang harus antara 1-20');
+      alert(t('alert.invalidPeople'));
       return;
     }
     
@@ -42,7 +42,7 @@ const App = () => {
       const hasValidOrders = person.orders.some(order => order.item && order.price > 0);
       
       if (!hasValidOrders) {
-        alert(`${person.name || `Orang ${i + 1}`} belum memiliki pesanan yang valid`);
+        alert(`${person.name || `${t('person')} ${i + 1}`} ${t('alert.noValidOrder')}`);
         return false;
       }
     }
@@ -87,26 +87,28 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-      <div className="container mx-auto px-4 sm:px-6 py-8 max-w-6xl">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#E8F3F2] to-[#EDF6F9]">
+      <main className="flex-grow">
+        <div className="container mx-auto px-4 sm:px-6 py-8 max-w-6xl">
+        
         {/* Header */}
         <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-2">
-            <img src="/favicon.ico" alt="Logo" className="w-10 h-10" />
+          <h1 className="text-5xl font-extrabold text-[#305268] flex items-center justify-center gap-3 animate-fade-up animate-once animate-duration-1000">
+            <img src="/logo.png" alt="Logo" className="w-12 h-12 sm:w-14 sm:h-14 object-contain" />
             {t('title')}
           </h1>
-          <p className="text-gray-600">{t('subtitle')}</p>
+          <p className="text-lg text-[#5C7483] mt-2 animate-fade-in animate-delay-500 animate-duration-1000">{t('subtitle')}</p>
           {/* 🔽 Tombol bahasa di sini */}
-          <div className="flex justify-center gap-4 mt-4">
+          <div className="flex justify-center gap-4 mt-4 animate-fade-in animate-delay-700 animate-duration-1000">
             <button
               onClick={() => i18n.changeLanguage('id')}
-              className="text-sm px-4 py-2 border rounded hover:bg-gray-100"
+              className="text-sm px-4 py-2 border border-[#88A9B3] text-[#305268] rounded hover:bg-[#A3CCD0] transition"
             >
               🇮🇩 Indonesia
             </button>
             <button
               onClick={() => i18n.changeLanguage('en')}
-              className="text-sm px-4 py-2 border rounded hover:bg-gray-100"
+              className="text-sm px-4 py-2 border border-[#88A9B3] text-[#305268] rounded hover:bg-[#A3CCD0] transition"
             >
               🇬🇧 English
             </button>
@@ -116,11 +118,11 @@ const App = () => {
         {/* Step 1: Number of People */}
         {step === 1 && (
           <div className="max-w-md mx-auto">
-            <div className="card">
-              <h2 className="text-2xl font-semibold mb-6 text-center">Berapa Orang?</h2>
+            <div className="card bg-white shadow-md rounded-lg p-6">
+              <h2 className="text-2xl font-semibold mb-6 text-center">{t('step1.title')}</h2>
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Jumlah Orang (1-20)
+                  {t('step1.label')}
                 </label>
                 <input
                   type="number"
@@ -133,10 +135,10 @@ const App = () => {
               </div>
               <button
                 onClick={initializePeople}
-                className="w-full btn-primary text-lg py-3 flex items-center justify-center gap-2"
+                className="w-full py-3 text-lg text-white rounded-md bg-[#88A9B3] hover:bg-[#305268] transition-colors flex items-center justify-center gap-2 animate-fade-up animate-delay-1000 animate-duration-1000"
               >
                 <Users className="w-5 h-5" />
-                Lanjutkan
+                {t('step1.next')}
               </button>
             </div>
           </div>
@@ -146,13 +148,13 @@ const App = () => {
         {step === 2 && (
           <div className="space-y-6">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-semibold">Input Pesanan</h2>
+              <h2 className="text-2xl font-semibold">{t('step2.title')}</h2>
               <button
                 onClick={resetApp}
                 className="flex items-center gap-2 text-gray-600 hover:text-gray-800"
               >
                 <RotateCcw className="w-4 h-4" />
-                Mulai Ulang
+                {t('step2.reset')}
               </button>
             </div>
 
@@ -169,12 +171,12 @@ const App = () => {
             </div>
 
             {/* Additional Costs */}
-            <div className="card">
-              <h3 className="text-lg font-semibold mb-4">Biaya Tambahan</h3>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-lg font-semibold mb-4">{t('step2.additionalTitle')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Pajak Restoran (%)
+                    {t('step2.taxLabel')}
                   </label>
                   <input
                     type="number"
@@ -187,14 +189,14 @@ const App = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Biaya Tambahan (Rp)
+                    {t('step2.additionalLabel')}
                   </label>
                   <input
                     type="number"
                     value={additionalCost}
                     onChange={(e) => setAdditionalCost(parseFloat(e.target.value) || 0)}
                     className="w-full input-field"
-                    placeholder="Service charge, parkir, dll"
+                    placeholder={t('step2.placeholder')}
                     min="0"
                   />
                 </div>
@@ -208,7 +210,7 @@ const App = () => {
                 className="bg-green-600 text-white py-3 px-8 rounded-md hover:bg-green-700 transition-colors flex items-center justify-center gap-2 mx-auto text-lg"
               >
                 <Calculator className="w-5 h-5" />
-                Hitung Split Bill
+                {t('step2.calculate')}
               </button>
             </div>
           </div>
@@ -225,11 +227,12 @@ const App = () => {
           />
         )}
       </div>
+    </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white text-center py-4 mt-12">
+      <footer className="bg-[#A6A6A6] text-white text-center py-3">
         <p className="text-sm">
-          Split Bill App - Made with ❤️ using React + Vite + TailwindCSS
+          {t('footer')}
         </p>
       </footer>
     </div>

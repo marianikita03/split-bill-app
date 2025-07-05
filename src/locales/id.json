@@ -1,6 +1,42 @@
 {
   "title": "Splitly",
   "subtitle": "Bagi tagihan restoran dengan mudah dan akurat",
-  "next": "Lanjutkan",
-  "howManyPeople": "Berapa Orang?"
+  "footer": "Shared simply and effortlessly with Splitly - by niki",
+  "step1": {
+    "title": "Berapa Orang?",
+    "label": "Jumlah Orang (1-20)",
+    "next": "Lanjutkan"
+  },
+  "step2": {
+    "title": "Input Pesanan",
+    "reset": "Mulai Ulang",
+    "additionalTitle": "Biaya Tambahan",
+    "taxLabel": "Pajak Restoran (%)",
+    "additionalLabel": "Biaya Tambahan (Rp)",
+    "placeholder": "Service charge, parkir, dll",
+    "calculate": "Hitung Split Bill"
+  },
+  "alert": {
+    "invalidPeople": "Jumlah orang harus antara 1-20",
+    "noValidOrder": "belum memiliki pesanan yang valid"
+  },
+  "person": "Orang",
+"namePlaceholder": "Nama Orang",
+"orderLabel": "Pesanan:",
+"orderPlaceholder": "Nama makanan/minuman",
+"addOrder": "Tambah Pesanan",
+"subtotal": "Subtotal:",
+"summary": {
+  "title": "Ringkasan Split",
+  "back": "Kembali",
+  "download": "Download PNG",
+  "downloadError": "Gagal mendownload gambar. Silakan coba lagi.",
+  "result": "Hasil Split Bill",
+  "total": "Total Keseluruhan",
+  "tax": "Pajak",
+  "additional": "Biaya Tambahan",
+  "orders": "Pesanan:",
+  "subtotal": "Subtotal",
+  "generated": "Dibuat pada"
+}
 }
