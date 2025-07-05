@@ -92,10 +92,10 @@ const App = () => {
         {/* Header */}
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-2">
-            <img src="/favicon.ico" alt="Logo" className="w-8 h-8" />
+            <img src="/favicon.ico" alt="Logo" className="w-10 h-10" />
             {t('title')}
           </h1>
-          <p className="text-gray-600">{t('subtitle')}Bagi tagihan restoran dengan mudah dan akurat</p>
+          <p className="text-gray-600">{t('subtitle')}</p>
           {/* 🔽 Tombol bahasa di sini */}
           <div className="flex justify-center gap-4 mt-4">
             <button
