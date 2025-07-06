@@ -45,13 +45,13 @@ const PersonInput = ({ personIndex, person, onUpdatePerson }) => {
       <div className="space-y-3">
         <label className="block text-sm font-medium text-gray-700">Pesanan:</label>
         {person.orders.map((order, orderIndex) => (
-          <div key={orderIndex} className="flex gap-2 items-center">
+          <div key={orderIndex} className="flex flex-col sm:flex-row sm:justify-between gap-2 items-start sm:items-center">
             <input
               type="text"
               placeholder={t('orderPlaceholder')}
               value={order.item}
               onChange={(e) => updateOrderItem(orderIndex, 'item', e.target.value)}
-              className="flex-1 input-field text-sm"
+              className="w-full sm:flex-1 input-field text-sm"
             />
             <div className="relative">
               <span className="absolute left-3 top-2 text-gray-500 text-sm">Rp</span>
@@ -60,12 +60,12 @@ const PersonInput = ({ personIndex, person, onUpdatePerson }) => {
                 placeholder="0"
                 value={order.price || ''}
                 onChange={(e) => updateOrderItem(orderIndex, 'price', parseFloat(e.target.value) || 0)}
-                className="w-28 input-field text-sm pl-8"
+                className="w-full sm:w-28 input-field text-sm pl-8"
               />
             </div>
             <button
               onClick={() => removeOrderItem(orderIndex)}
-              className="p-2 text-red-500 hover:bg-red-50 rounded-md transition-colors"
+              className="p-2 text-red-500 hover:bg-red-50 rounded-md transition-colors self-end sm:self-auto"
               disabled={person.orders.length === 1}
             >
               <Trash2 className="w-4 h-4" />

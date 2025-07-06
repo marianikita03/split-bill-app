@@ -9,7 +9,7 @@ const App = () => {
   const [step, setStep] = useState(1);
   const [numberOfPeople, setNumberOfPeople] = useState(2);
   const [people, setPeople] = useState([]);
-  const [taxPercent, setTaxPercent] = useState(10);
+  const [taxPercent, setTaxPercent] = useState(0);
   const [additionalCost, setAdditionalCost] = useState(0);
   const [results, setResults] = useState([]);
   const { t, i18n } = useTranslation();
