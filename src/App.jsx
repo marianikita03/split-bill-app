@@ -182,6 +182,11 @@ const App = () => {
                     type="number"
                     value={taxPercent}
                     onChange={(e) => setTaxPercent(parseFloat(e.target.value) || 0)}
+                    onFocus={(e) => {
+                      if (e.target.value === "0") {
+                        e.target.value = "";
+                      }
+                    }}
                     className="w-full input-field"
                     min="0"
                     max="100"
