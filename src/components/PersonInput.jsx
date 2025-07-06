@@ -5,6 +5,10 @@ import { useTranslation } from 'react-i18next';
 
 const PersonInput = ({ personIndex, person, onUpdatePerson }) => {
   const { t } = useTranslation();
+
+  const formatRupiah = (number) => {
+    return number.toLocaleString('id-ID');
+  };
   
   const addOrderItem = () => {
     const newOrders = [...person.orders, { item: '', price: 0 }];
@@ -56,11 +60,15 @@ const PersonInput = ({ personIndex, person, onUpdatePerson }) => {
             <div className="relative">
               <span className="absolute left-3 top-2 text-gray-500 text-sm">Rp</span>
               <input
-                type="number"
+                type="text"
+                inputMode="numeric"
                 placeholder="0"
-                value={order.price || ''}
-                onChange={(e) => updateOrderItem(orderIndex, 'price', parseFloat(e.target.value) || 0)}
-                className="w-full sm:w-28 input-field text-sm pl-8"
+                value={order.price === 0 ? '' : formatRupiah(order.price)}
+                onChange={(e) => {
+                  const numericValue = parseInt(e.target.value.replace(/\D/g, ''), 10) || 0;
+                  updateOrderItem(orderIndex, 'price', numericValue);
+                }}
+                className="w-full sm:w-28 input-field text-sm pl-8 text-right"
               />
             </div>
             <button

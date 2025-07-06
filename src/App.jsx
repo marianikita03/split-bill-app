@@ -197,12 +197,20 @@ const App = () => {
                     {t('step2.additionalLabel')}
                   </label>
                   <input
-                    type="number"
-                    value={additionalCost}
-                    onChange={(e) => setAdditionalCost(parseFloat(e.target.value) || 0)}
-                    className="w-full input-field"
+                    type="text"
+                    inputMode="numeric"
                     placeholder={t('step2.placeholder')}
-                    min="0"
+                    value={additionalCost === 0 ? '' : additionalCost.toLocaleString('id-ID')}
+                    onChange={(e) => {
+                      const value = parseInt(e.target.value.replace(/\D/g, '')) || 0;
+                      setAdditionalCost(value);
+                    }}
+                    onFocus={(e) => {
+                      if (additionalCost === 0) {
+                        e.target.value = '';
+                      }
+                    }}
+                    className="w-full input-field"
                   />
                 </div>
               </div>
